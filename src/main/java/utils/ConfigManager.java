@@ -1,3 +1,5 @@
+package utils;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -20,10 +22,14 @@ public class ConfigManager {
   }
 
   public static String getBaseUrl() {
-    return getProperty("baseUrl");  
+    return getProperty("base.url");
   }
 
   public static String getContentType() {
-    return getProperty("content.Type");
+    return getProperty("content.type");
+  }
+
+  public static String getKey() {
+    return getProperty("x-api-key");
   }
 }

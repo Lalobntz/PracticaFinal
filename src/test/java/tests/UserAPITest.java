@@ -1,13 +1,15 @@
-package test;
+package tests;
 
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 import services.UserService;
+import utils.ConfigManager;
 import utils.UserGenerator;
 
 import java.util.Map;
 
-import static org.hamcrast.Matchers.*;
+import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserAPITest {
@@ -23,6 +25,7 @@ public class UserAPITest {
         .body("name", equalTo(userData.get("name")))
         .body("job", equalTo(userData.get("job")));
     System.out.println("Usuario creado:\n" + response.prettyPrint());
+    System.out.println("Valor desde config: " + ConfigManager.getBaseUrl());
   }
 
   @Test
@@ -45,5 +48,6 @@ public class UserAPITest {
 
     assertEquals(204, response.getStatusCode());
     System.out.println("Usuario eliminado, status:\n" + response.prettyPrint());
+    System.out.println("Valor desde config: " + ConfigManager.getBaseUrl());
   }
 }
